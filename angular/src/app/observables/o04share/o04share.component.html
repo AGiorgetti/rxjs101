@@ -1,0 +1,38 @@
+<h2>Stream with an initial value (not shared)</h2>
+<p>
+  notShared$ is not shared, this means that for every async pipe, the functionality to calculate catName will be executed again
+</p>
+<ul>
+  <li>First = {{notShared$|async}}</li>
+  <li>Second = {{notShared$|async}}</li>
+</ul>
+<p>Both expressions are displayed correctly</p>
+
+<h2>Stream with an initial value (shared)</h2>
+<p>
+  shared$ is shared, this means that for all async pipes, the functionality will be executed only once
+</p>
+<ul>
+  <li>First = {{shared$|async}}</li>
+  <li>Second = {{shared$|async}}</li>
+</ul>
+<p>Only the first expression is displayed correctly</p>
+<p>
+  The share() operator will publish the first value on the first subscription. The first async pipe will subscribe and get
+  the value. The second async pipe however will subscribe after that value has already been emitted and therefore will miss
+  it.
+</p>
+
+<h2>Stream with an initial value (shareReplay)</h2>
+<p>
+  sharedReplay$ is shared, this means that for all async pipes, the functionality will be executed only once
+</p>
+<ul>
+  <li>First = {{sharedReplay$|async}}</li>
+  <li>Second = {{sharedReplay$|async}}</li>
+</ul>
+<p>Both expressions are displayed correctly and the functionality is only executed once</p>
+<p>
+  the shareReplay(1) operator will do a publishReplay(1).refcount() behind the scenes which keeps track of the last element in
+  the stream, and will emit it again when the second subscription is made.
+</p>

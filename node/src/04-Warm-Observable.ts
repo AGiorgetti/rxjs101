@@ -16,6 +16,7 @@ const o = interval(1000).pipe(
 );
 
 // publish() + refCount() make the observable "warm": it will start producing values when we've got the first subscribe.
+// refCount() will call ConnectedObservable.connect() when we add the first subscription.
 
 setTimeout(
     () => o.subscribe(v => console.log("1st subscriber: " + v)),

@@ -14,9 +14,10 @@ import { publish } from "rxjs/operators";
 // HOT is when your observable closes over the producer.
 
 const o = new Observable<number>(subscriber => subscriber.next(Date.now())).pipe(
-    publish()
+    publish() // creates a ConnectedObservable: it shares the subscription to the underlying source
 ) as ConnectableObservable<number>; // there's an issue about type inference not working: https://github.com/ReactiveX/rxjs/issues/2972
 
+// calling connect will "trigger" the subscription to the original observable source
 o.connect(); // nothing will be displayed if we call connect() and activate the observable here, we subscribe a little bit too late
 
 o.subscribe(v => console.log("1st subscriber: " + v));
