@@ -13,7 +13,7 @@ export class O01ColdObservablesComponent implements OnInit {
   public items$: Observable<any>;
 
   constructor(
-    private http: HttpClient
+    http: HttpClient
   ) {
     this.items$ = http.get('./assets/database.json').pipe(
       map((result: any) => result != null ? result.items : null)

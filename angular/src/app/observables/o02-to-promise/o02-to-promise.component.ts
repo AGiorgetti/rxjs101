@@ -12,7 +12,7 @@ export class O02ToPromiseComponent implements OnInit {
   public items$: Promise<any>;
 
   constructor(
-    private http: HttpClient
+    http: HttpClient
   ) {
     this.items$ = http.get('./assets/database.json').pipe(
       map((result: any) => result != null ? result.items : null)

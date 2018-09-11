@@ -1,6 +1,6 @@
 <h2>Stream with an initial value (not shared)</h2>
 <p>
-  notShared$ is not shared, this means that for every async pipe, the functionality to calculate catName will be executed again
+  <strong>notShared$</strong> is <strong>NOT SHARED</strong>, this means that for every async pipe, the functionality to calculate the value will be executed again
 </p>
 <ul>
   <li>First = {{notShared$|async}}</li>
@@ -10,7 +10,7 @@
 
 <h2>Stream with an initial value (shared)</h2>
 <p>
-  shared$ is shared, this means that for all async pipes, the functionality will be executed only once
+  <strong>shared$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the functionality will be executed only once
 </p>
 <ul>
   <li>First = {{shared$|async}}</li>
@@ -25,7 +25,7 @@
 
 <h2>Stream with an initial value (shareReplay)</h2>
 <p>
-  sharedReplay$ is shared, this means that for all async pipes, the functionality will be executed only once
+  <strong>sharedReplay$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the functionality will be executed only once
 </p>
 <ul>
   <li>First = {{sharedReplay$|async}}</li>

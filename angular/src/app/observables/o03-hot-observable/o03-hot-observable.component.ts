@@ -26,7 +26,7 @@ export class O03HotObservableComponent implements OnInit {
       // shareReplay(1)
     );
 
-    // will not display anything (will only get new values)
+    // 3rd subscriber will not display anything (will only get new values)
     setTimeout(() => this.lateItems$ = this.items$, 3000);
   }
 

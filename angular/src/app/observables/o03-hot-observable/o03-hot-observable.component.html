@@ -15,6 +15,7 @@ Third (binds some second later: not getting new values)
 
 <p>experiment how we make the observable hot:</p>
 <ul>
+  <li>default cold observable - rendering works, but we have multiple web requests</li>
   <li>publish().refCount() - does not work! "late bound" component will not get any value</li>
   <li>publishLast().refCount() or publishReplay(1).refCount() - will work</li>
   <li>share() - will partially work: a new http request will be made; also share() has a problem with the initial value: it will be delivered only to the first subscription</li>
