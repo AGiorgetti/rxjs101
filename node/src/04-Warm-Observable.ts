@@ -2,10 +2,11 @@ import { ConnectableObservable, interval } from "rxjs";
 import { map, publish, refCount, tap } from "rxjs/operators";
 
 // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables
-
+//
 // Warm observables are a special kinds of observables:
-// they are cold because they start producing values only after a subscription is active.
-// they are hot because the data is shared among all the subscribers.
+//
+// - they are cold because they start producing values only after a subscription is active.
+// - they are hot because the data is shared among all the subscribers.
 
 
 const o = interval(1000).pipe(

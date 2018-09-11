@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "rxjs": "6.3.1"
+    "rxjs": "6.3.2"
   },
   "devDependencies": {
     "@types/node": "10.9.4"
