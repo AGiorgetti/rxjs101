@@ -8,7 +8,7 @@ Second
 <ul>
   <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
 </ul>
-Third (binds some second later: not getting new values)
+Third (binds some seconds later: it will get only the new values)
 <ul>
   <li *ngFor="let itm of lateItems$ | async">{{itm | json}}</li>
 </ul>

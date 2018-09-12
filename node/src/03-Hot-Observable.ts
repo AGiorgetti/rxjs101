@@ -10,7 +10,7 @@ import { publish } from "rxjs/operators";
 // it will get all values in the stream that are emitted after it subscribes.
 //
 // The hot observable sequence IS SHARED among all subscribers,
-// and each subscriber is pushed the next value in the sequence.
+// and each subscriber is pushed the next value in the sequence; they are multicast.
 //
 // The producer will keep going emitting values whether there's a subscriber or not.
 //

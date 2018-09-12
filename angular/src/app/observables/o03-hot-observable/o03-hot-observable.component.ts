@@ -18,6 +18,7 @@ export class O03HotObservableComponent implements OnInit {
   ) {
     this.items$ = http.get('./assets/database.json').pipe(
       map((result: any) => result != null ? result.items : null),
+      // experiment uncommenting the following code
       /*
       publish(),
       refCount() // make this observable hot

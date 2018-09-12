@@ -1,4 +1,4 @@
-import { Observable, interval } from "rxjs";
+import { Observable, interval, Subscriber, Subject } from "rxjs";
 
 // creates a new Observable
 //
@@ -24,5 +24,17 @@ const o2 = interval(1000);
 
 o2.subscribe(v => console.log("1st subscriber: " + v));
 o2.subscribe(v => console.log("2nd subscriber: " + v));
+
+*/
+
+/*
+
+// a Subject is a 'combination' of an Observable and an Observer
+
+const s = new Subject<number>();
+s.next(1);
+s.subscribe(v => console.log("1st subscriber: " + v));
+s.subscribe(v => console.log("2nd subscriber: " + v));
+s.next(2);
 
 */
