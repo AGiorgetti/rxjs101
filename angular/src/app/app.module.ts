@@ -8,6 +8,7 @@ import { O01ColdObservablesComponent } from './observables/o01-cold-observables/
 import { O02ToPromiseComponent } from './observables/o02-to-promise/o02-to-promise.component';
 import { O03HotObservableComponent } from './observables/o03-hot-observable/o03-hot-observable.component';
 import { O04ShareComponent } from './observables/o04-share/o04-share.component';
+import { O05UnsubscribeComponent } from './observables/o05-unsubscribe/o05-unsubscribe.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { O04ShareComponent } from './observables/o04-share/o04-share.component';
     O01ColdObservablesComponent,
     O02ToPromiseComponent,
     O03HotObservableComponent,
-    O04ShareComponent
+    O04ShareComponent,
+    O05UnsubscribeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { O04ShareComponent } from './observables/o04-share/o04-share.component';
       { path: 'cold', component: O01ColdObservablesComponent },
       { path: 'topromise', component: O02ToPromiseComponent },
       { path: 'hot', component: O03HotObservableComponent },
-      { path: 'share', component: O04ShareComponent }
+      { path: 'share', component: O04ShareComponent },
+      { path: 'unsubscribe', component: O05UnsubscribeComponent }
     ])
   ],
   providers: [],

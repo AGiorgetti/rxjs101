@@ -52,7 +52,7 @@ import { take } from "rxjs/operators";
     // some of them:
     // - take(n): emits N values before stopping the observable.
     // - takeWhile(predicate): tests the emitted values against a predicate, if it returns `false`, it will complete.
-    // - takeUntil (predicate): tests the emitted values against a predicate, if it returns `true`, it will complete.
+    // - takeUntil(predicate): tests the emitted values against a predicate, if it returns `true`, it will complete.
     // - first(): emits the first value and completes.
     // - first(predicate): checks each value against a predicate function, if it returns `true`, the emits that value and completes.
     // - toPromise(): convertsthe observable in a promise.
