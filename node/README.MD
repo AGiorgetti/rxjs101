@@ -1,27 +1,31 @@
 # rxjs
 
-RxJS is a library for [reactive programming](https://www.reactivemanifesto.org/) using Observables and the Observer pattern.
+[RxJS](https://github.com/ReactiveX/rxjs) is a library for [Reactive Programming](https://www.reactivemanifesto.org/) using Observables and a sligthly modified [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern).
 
 [The Reactive Manifesto](https://www.reactivemanifesto.org/)
 
-The essential concepts in RxJS which solve async event management are:
+The essential concepts in RxJS used to solve the "async" event management problem are:
 
-- Observable: represents the idea of an invokable collection of future values or events.
-- Observer: is a collection of callbacks that knows how to listen to values delivered by the Observable.
-- Subscription: represents the execution of an Observable, it is primarily useful for cancelling the execution.
-- Operators: are pure functions that enable a functional programming style of coding (operations like map, filter, concat, reduce, etc.).
-- Subject: is the equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
-- Schedulers: are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or interval, etc.
+- __Observable__: represents the idea of an invokable collection of future values or events; we can think of an Observable like a stream of data that keep coming over time.
+- __Observer__: is a collection of callbacks that knows how to listen to values delivered by the Observable.
+- __Subscription__: represents the execution of an Observable, it is primarily used for cancelling the execution; the term is also used to indicate the lazy computation that happens for each observer that subscribes.
+- __Operators__: pure functions that enable a functional programming style of coding (operations like map, filter, concat, etc.).
+- __Subject__: is the equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+- __Schedulers__: are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or interval, etc.
 
 To keep things simple we can think of an Observable like a stream of data that keep coming over time.
 
-We have operators to inspect, alter, transform the stream or the data that keep coming out of it.
+We also have operators to inspect, alter and transform the stream or the data that keep coming out of it.
+
+It's a modified Observer Pattern because:
+in the Observer Pattern the Subject maintains a list of its observers, this is not true with Observabe, that do not track its subscriptions.
+
 
 # Documentation
 
 The sample is based on rxjx 6+
 
-[rxjs GitHub](ttps://github.com/ReactiveX/rxjs)
+[rxjs GitHub](https://github.com/ReactiveX/rxjs)
 [rxjs documentation](https://rxjs-dev.firebaseapp.com/)
 [rxjs marbles](http://rxmarbles.com/)
 [learn rxjs](https://www.learnrxjs.io/)
