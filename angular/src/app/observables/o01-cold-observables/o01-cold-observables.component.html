@@ -1,4 +1,4 @@
-<h2>01 Cold Observables</h2>
+<h2>01 Unicast / Cold Observables</h2>
 
 First
 <ul>
@@ -9,4 +9,10 @@ Second
   <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
 </ul>
 
-<p>Look: we have TWO (2) web requests!</p>
+<p><strong>Look: we have TWO (2) web requests!</strong></p>
+<br />
+<p>The AsyncPipe will subscribe to the observable to get the data stream.</p>
+<p>Http.get returns a Unicast Observable, an execution will start for each subscriber!</p>
+<p>This means a new Http request will be made for each binding.</p>
+<br />
+<p><strong>What can we do to reduce the number of requests?</strong></p>

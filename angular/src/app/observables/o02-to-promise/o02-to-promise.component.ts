@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { IDatabase, IItem } from '../model';
 
 @Component({
   selector: 'app-o02-to-promise',
@@ -9,16 +10,17 @@ import { map } from 'rxjs/operators';
 })
 export class O02ToPromiseComponent implements OnInit {
 
-  public items$: Promise<any>;
+  public items: Promise<IItem[]>;
 
   constructor(
     http: HttpClient
   ) {
-    this.items$ = http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null)
-    ).toPromise();
+    this.items = http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map((result: any) => result != null ? result.items : null)
+      )
+      .toPromise();
   }
-
 
   ngOnInit() {
   }

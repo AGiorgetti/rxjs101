@@ -2,18 +2,19 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, take, takeUntil } from 'rxjs/operators';
+import { IItem, IDatabase } from '../model';
 
 /**
  * Unsubscribe is a "MUST DO!" operation to avoid memory leaks and bugs.
  *
  * you have several ways of doing it:
  *
- * 1- AsyncPipe - Angular will take care of unsubscribing when the component is destroyed
- * 2- Subscription.unsubscribe() - Call the unsubscribe() method imperatively for any subscription created in code
+ * 1- AsyncPipe - Angular will take care of unsubscribing when the component is destroyed.
+ * 2- Subscription.unsubscribe() - Call the .unsubscribe() method imperatively for any subscription created in code.
  * 3- Use rxjs operators that automatically unsubscribe: take, takeUntill, etc...
  *
  * Angular Best Practice:
- * - use the actions combined of a Subject and the takeUntil() operator
+ * - use the actions combined of a Subject and the takeUntil() operator.
  * - create an instance member: private onDestroy$ = new Subject();
  * - use this subject with your Observables: this.http.get().takeUntil(this.onDestroy$).subscribe(…)
  * - emit a value in the ngOnDestroy method: this.onDestroy$.next();
@@ -34,48 +35,55 @@ import { map, take, takeUntil } from 'rxjs/operators';
 })
 export class O05UnsubscribeComponent implements OnInit, OnDestroy {
 
-  public items$: Observable<any>;
+  public items$: Observable<IItem[]>;
 
-  public items_explicit: any[];
+  public items_explicit: IItem[];
   public items_explicit_subscription: Subscription;
 
-  public items_take_unsubscribe: any[];
+  public items_take_unsubscribe: IItem[];
 
   // Best Practice
-  public items_best_practice: any[];
+  public items_best_practice: IItem[];
   private onDestroy$ = new Subject<boolean>();
 
   constructor(
     http: HttpClient
   ) {
-    // 1- AsyncPipe binding
-    this.items$ = http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null)
-    );
+    // 1- AsyncPipe binding: no need to manually unsubscribe
+    this.items$ = http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map(result => result != null ? result.items : null)
+      );
 
-    // 2- explicit subscription: must be manually unsunscribed dusing OnDestroy
-    this.items_explicit_subscription = http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null)
-    ).subscribe(data => this.items_explicit = data);
+    // 2- Explicit Subscription: must be manually unsunscribed in ngOnDestroy()
+    this.items_explicit_subscription = http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map(result => result != null ? result.items : null)
+      )
+      .subscribe(data => this.items_explicit = data);
 
-    // 3- rxjs operator that unsubscribe()
-    http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null),
-      take(1)
-    ).subscribe(data => this.items_take_unsubscribe = data);
+    // 3- rxjs operator that .unsubscribe()
+    http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map(result => result != null ? result.items : null),
+        take(1) // take() unsubscrbes after getting the first value
+      )
+      .subscribe(data => this.items_take_unsubscribe = data);
 
     // Best Practice
-    http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null),
-      takeUntil(this.onDestroy$)
-    ).subscribe(data => this.items_best_practice = data);
-
+    http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map(result => result != null ? result.items : null),
+        takeUntil(this.onDestroy$) // takeUntill will unsubscribe when it gets a message
+      )
+      .subscribe(data => this.items_best_practice = data);
   }
 
   ngOnInit() {
   }
 
   ngOnDestroy(): void {
+    // imperatively unsubscribe
     if (this.items_explicit_subscription != null) {
       this.items_explicit_subscription.unsubscribe();
     }

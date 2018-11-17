@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { IDatabase } from '../model';
 
 @Component({
   selector: 'app-o01-cold-observables',
@@ -15,9 +16,10 @@ export class O01ColdObservablesComponent implements OnInit {
   constructor(
     http: HttpClient
   ) {
-    this.items$ = http.get('./assets/database.json').pipe(
-      map((result: any) => result != null ? result.items : null)
-    );
+    this.items$ = http.get<IDatabase>('./assets/database.json')
+      .pipe(
+        map(result => result != null ? result.items : null)
+      );
   }
 
   ngOnInit() {
