@@ -1,4 +1,4 @@
-import { Observable, interval } from "rxjs";
+import { Observable } from "rxjs";
 
 // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables
 //
@@ -21,11 +21,18 @@ class Message {
     constructor() {
         Message.idx++;
         this.id = Message.idx;
-        console.log(`Message constructed: ${this.id}`);
+        console.log(`Message constructed with id: ${this.id}`);
     }
 }
 
-const o3$ = new Observable<Message>(subscriber => subscriber.next(new Message()));
+const o$ = new Observable<Message>(subscriber => subscriber.next(new Message()));
 
-o3$.subscribe(msg => console.log("1st subscriber: " + msg.id));
-o3$.subscribe(msg => console.log("2nd subscriber: " + msg.id));
+o$.subscribe(msg => console.log("1st subscriber: " + JSON.stringify(msg)));
+o$.subscribe(msg => console.log("2nd subscriber: " + JSON.stringify(msg)));
+
+// Output:
+//
+// Message constructed with id: 1
+// 1st subscriber: {"id":1}
+// Message constructed with id: 2
+// 2nd subscriber: {"id":2}

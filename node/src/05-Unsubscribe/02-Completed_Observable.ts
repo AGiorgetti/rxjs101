@@ -12,4 +12,10 @@ const source$ = of("single data"); // sync observable that completes after emitt
 const subscription = source$.subscribe(data => console.log(data));
 
 console.log(`was the subscription closed? ${subscription.closed}`);
-console.log('if "true" there\'s not need to unsubscribe.');
+console.log('if "true" there\'s no need to unsubscribe.');
+
+// Output:
+//
+// single data
+// was the subscription closed? true
+// if "true" there's no need to unsubscribe.

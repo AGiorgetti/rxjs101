@@ -3,9 +3,9 @@ import { take } from "rxjs/operators";
 
 // 4- Use Operators that call Complete or Stop the observable
 
-console.log('* Operators that call Complete');
+console.log('* Operators that call complete()');
 
-// some operators that complete:
+// some operators complete the execution:
 // - take(n): emits N values before stopping the observable.
 // - takeWhile(predicate): tests the emitted values against a predicate, if it returns `false`, it will complete.
 // - takeUntil(predicate): tests the emitted values against a predicate, if it returns `true`, it will complete.
@@ -28,3 +28,11 @@ console.log(`was the subscription closed? ${subscription.closed}`);
 setTimeout(
     () => console.log(`was the subscription closed? ${subscription.closed}`),
     4000);
+
+// Output:
+//
+// was the subscription closed? false
+// timer: 0 
+// timer: 1
+// timer: 2
+// was the subscription closed? true (after 4s)

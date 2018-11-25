@@ -1,5 +1,5 @@
-import { ConnectableObservable, Observable } from "rxjs";
-import { publish } from "rxjs/operators";
+import { ConnectableObservable, Observable, Subject } from "rxjs";
+import { multicast } from "rxjs/operators";
 
 // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables
 //
@@ -15,17 +15,25 @@ import { publish } from "rxjs/operators";
 // The producer will keep going emitting values whether there's a subscriber or not.
 //
 // a Subject is the only way we can Multicast in rxjs, 
-// is there a way to make an Observable multicast ?
+// so how can we make an Observable multicast?
 
-const o$ = new Observable<number>(subscriber => subscriber.next(Date.now()))
+// what publish() does under the hood:
+
+const o2$ = new Observable<number>(subscriber => subscriber.next(Date.now()))
     .pipe(
-        publish() // creates a ConnectedObservable: it creates and underlying Subject and shares it with the new subscribers
+        multicast(new Subject()) // creates a ConnectableObservable: 
+                                 // it creates and underlying Subject and shares it
+                                 // with the new subscribers
     ) as ConnectableObservable<number>; // there's an issue about type inference not working: https://github.com/ReactiveX/rxjs/issues/2972
 
-// calling connect will "trigger" the subscription to the original observable source
-o$.connect(); // nothing will be displayed if we call connect() and activate the observable here, we subscribe a little bit too late.
+// .subscribe() will subscribe to the internal Subject
+o2$.subscribe(v => console.log("1st subscriber: " + v));
+o2$.subscribe(v => console.log("2nd subscriber: " + v));
 
-o$.subscribe(v => console.log("1st subscriber: " + v));
-o$.subscribe(v => console.log("2nd subscriber: " + v));
+// will subscribe the Subject to the source Observable triggering the execution
+o2$.connect();
 
-// o.connect(); // we'll see the same value for all the observables if we activate it here
+// Output:
+//
+// 1st subscriber: 1543146843351
+// 2nd subscriber: 1543146843351

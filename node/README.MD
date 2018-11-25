@@ -20,29 +20,29 @@ We also have operators to inspect, alter and transform the stream or the data th
 It's a modified Observer Pattern because:
 in the Observer Pattern the Subject maintains a list of its observers, this is not true with Observabe, that do not track its subscriptions.
 
+Only the Subject is actually a real implementation of the observer pattern, because it tracks all its subscribers.
+
 
 # Documentation
 
 The sample is based on rxjx 6+
 
-[rxjs GitHub](https://github.com/ReactiveX/rxjs)
-[rxjs documentation](https://rxjs-dev.firebaseapp.com/)
-[rxjs marbles](http://rxmarbles.com/)
-[learn rxjs](https://www.learnrxjs.io/)
-[old rxjs documentation](http://reactivex.io/rxjs/manual/overview.html)
+- [RxJS GitHub](https://github.com/ReactiveX/rxjs)
+- [RxJS documentation](https://rxjs-dev.firebaseapp.com/)
+- [RxJS marbles](http://rxmarbles.com/)
+- [Learn RxJS](https://www.learnrxjs.io/)
+- [Old RxJS documentation](http://reactivex.io/rxjs/manual/overview.html)
 
 # Compile the Samples
 
 move to the folder: .\node
 
-run:
+open a command propmpt and type:
 
     tsc -w
 
 # Run the Samples
 
-to run the compiled samples:
-
-open a command prompt and run
+to run the compiled samples open a command prompt and type:
 
     node .\out-tsc\sampleName.js

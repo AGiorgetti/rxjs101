@@ -15,9 +15,22 @@ const o$ = new Observable<number>(subscriber => {
 
 o$.subscribe(v => console.log("subscriber: " + v));
 
+// Output:
+//
+// subscriber: 1
+// subscriber: 2
+// subscriber: 3 (after 1s)
+
 // or use a builtin `creation operator` to create an Observable that
 // emits an infinite sequence of numbers over time
 
 const o2$ = interval(1000);
 
 o2$.subscribe(v => console.log("interval subscriber: " + v));
+
+// Output:
+//
+// interval subscriber: 0
+// interval subscriber: 1
+// interval subscriber: 2
+// interval subscriber: 3

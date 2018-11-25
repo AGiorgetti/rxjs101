@@ -9,7 +9,7 @@ import { map, publish, refCount, tap } from "rxjs/operators";
 // - they are hot because the data is shared among all the subscribers.
 
 const o$ = interval(1000).pipe(
-    map(() => Date.now()),
+    // map(() => Date.now()),
     tap(date => console.log("new value: " + date)),
     publish(),
     refCount()
@@ -18,8 +18,8 @@ const o$ = interval(1000).pipe(
 // publish() + refCount() make the observable "Warm": 
 // it will start producing values when the first observable subscribes.
 //
-// - publish() make the observable multicast.
-// - refCount() will call ConnectedObservable.connect() when we add the first subscription.
+// - publish() make the observable multicast (it will produce a ConnectableObservable).
+// - refCount() will call ConnectableObservable.connect() when we add the first subscription.
 
 setTimeout(
     () => o$.subscribe(msg => console.log("1st subscriber: " + msg)),
@@ -30,3 +30,17 @@ setTimeout(
 setTimeout(
     () => o$.subscribe(msg => console.log("2nd subscriber: " + msg)),
     6000);
+
+
+// Output:
+//
+// new value: 0       (after 3s)
+// 1st subscriber: 0
+// new value: 1
+// 1st subscriber: 1
+// new value: 2       (after 6s)
+// 1st subscriber: 2
+// 2nd subscriber: 2
+// new value: 3
+// 1st subscriber: 3
+// 2nd subscriber: 3

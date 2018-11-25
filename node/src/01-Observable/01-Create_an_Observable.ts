@@ -31,3 +31,8 @@ const subscription = o$.subscribe(v => console.log("subscriber: " + v));
 console.log(`is the observable active? ${!subscription.closed}`);
 
 // the subscription can be used to cancel the execution, more on this later on.
+
+// Output:
+//
+// subscriber: 1
+// is the observable active? true

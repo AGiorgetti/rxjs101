@@ -22,3 +22,14 @@ setTimeout(() => {
     o$.subscribe(v => console.log("2nd subscriber: " + v));
 }, 6000);
 
+// Output:
+//
+// 1st subscriber: 2 (after 3s)
+// 1st subscriber: 3
+// 1st subscriber: 4
+// 1st subscriber: 5 (after 6s)
+// 2nd subscriber: 5
+// 1st subscriber: 6
+// 2nd subscriber: 6
+// 1st subscriber: 7
+// 2nd subscriber: 7

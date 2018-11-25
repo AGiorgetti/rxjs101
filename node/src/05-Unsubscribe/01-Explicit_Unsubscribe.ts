@@ -29,3 +29,10 @@ subscription.unsubscribe();
 
 console.log(`was the subscription closed? ${subscription.closed}`);
 console.log('We unsubscribed before the timer could emit it\' first tick');
+
+// Output:
+//
+// was the subscription closed? false
+// (no message delivered)
+// was the subscription closed? true
+// We unsubscribed before the timer could emit it' first tick

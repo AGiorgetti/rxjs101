@@ -22,6 +22,11 @@ s$.subscribe(v => console.log("1st subscriber: " + v));
 s$.subscribe(v => console.log("2nd subscriber: " + v));
 s$.next(2);
 
+// Output:
+//
+// 1st subscriber: 2
+// 2nd subscriber: 2
+
 // There are also some specialization of the Subject class:
 // - BehaviorSubject: keeps the current value and replays it to the new subscribers
 // - RelaySubject: records multiple values form the observable execution and replays them to the new subscribers
