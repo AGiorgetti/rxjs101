@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription, Subject } from 'rxjs';
+import { Observable, Subscription, Subject } from 'RxJS';
 import { HttpClient } from '@angular/common/http';
 import { map, take, takeUntil } from 'rxjs/operators';
 import { IItem, IDatabase } from '../model';
@@ -11,7 +11,7 @@ import { IItem, IDatabase } from '../model';
  *
  * 1- AsyncPipe - Angular will take care of unsubscribing when the component is destroyed.
  * 2- Subscription.unsubscribe() - Call the .unsubscribe() method imperatively for any subscription created in code.
- * 3- Use rxjs operators that automatically unsubscribe: take, takeUntill, etc...
+ * 3- Use RxJS operators that automatically unsubscribe: take, takeUntill, etc...
  *
  * Angular Best Practice:
  * - use the actions combined of a Subject and the takeUntil() operator.
@@ -62,7 +62,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
       )
       .subscribe(data => this.items_explicit = data);
 
-    // 3- rxjs operator that .unsubscribe()
+    // 3- RxJS operators that .complete()
     http.get<IDatabase>('./assets/database.json')
       .pipe(
         map(result => result != null ? result.items : null),
@@ -92,6 +92,5 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
     this.onDestroy$.next(true);
     this.onDestroy$.complete();
   }
-
 
 }

@@ -15,9 +15,10 @@ Third (binds some seconds later: it will get only the new values)
 
 <p>experiment how we make the observable hot:</p>
 <ul>
-  <li>default cold observable - rendering works, but we have multiple (3) web requests!</li>
-  <li>publish(),refCount() - does not work! "late bound" components will not receive any value!</li>
-  <li>publishLast(),refCount() or publishReplay(1),refCount() - will work!</li>
-  <li>share() - will partially work: a new http request will be made (a total of 2); but share() has a problem with the initial value: it will be delivered only to the first subscription.</li>
-  <li>shareReplay(1) - will work!</li>
+  <li><strong>default unicast observable</strong> - rendering works, but we have multiple (3) web requests!</li>
+  <li><strong>publish(),refCount()</strong> - does not work! "late bound" components will not receive any value!</li>
+  <li><strong>publishLast(),refCount()</strong> or <strong>publishReplay(1),refCount()</strong> - will work!</li>
+  <li><strong>share()</strong> - will partially work: a new http request will be made (a total of 2); but share() has a
+    problem with the initial value: it will be delivered only to the first subscription.</li>
+  <li><strong>shareReplay(1)</strong> - will work!</li>
 </ul>

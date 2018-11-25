@@ -29,7 +29,7 @@ export class O03HotObservableComponent implements OnInit {
         // shareReplay(1)
       );
 
-    // if the Observable is Multicast the 3rd subscriber will
+    // if the Observable is a Multicast the 3rd subscriber will
     // not display anything (will only get new values)
     setTimeout(() => this.lateItems$ = this.items$, 3000);
   }
