@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription, Subject } from 'RxJS';
+import { Observable, Subscription, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, take, takeUntil } from 'rxjs/operators';
 import { IItem, IDatabase } from '../model';

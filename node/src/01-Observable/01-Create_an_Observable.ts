@@ -25,7 +25,8 @@ import { Observable } from "rxjs";
 
 const o$ = new Observable<number>(subscriber => subscriber.next(1));
 
-// creates a Subscription: an "execution environment" for the observer/consumer
+// creates a Subscription: an "execution environment" for the observer/consumer.
+// the observable will start emitting values only after a subscription.
 const subscription = o$.subscribe(v => console.log("subscriber: " + v));
 
 console.log(`is the observable active? ${!subscription.closed}`);

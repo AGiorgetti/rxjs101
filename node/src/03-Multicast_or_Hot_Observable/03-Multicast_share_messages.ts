@@ -3,7 +3,7 @@ import { publish } from "rxjs/operators";
 
 // a Multicast / Hot observable is shared among all the subscribers.
 // every subscriber will get the same message, there will be just one
-// execution of the observable
+// execution of the observable.
 
 const o$ = interval(1000)
     .pipe(

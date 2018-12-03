@@ -19,7 +19,8 @@ import { publish } from "rxjs/operators";
 
 const o$ = new Observable<number>(subscriber => subscriber.next(Date.now()))
     .pipe(
-        publish() // creates a ConnectedObservable: it creates and underlying Subject and shares it with the new subscribers
+        publish() // creates a ConnectableObservable: it creates and underlying Subject
+                  // and shares it with the new subscribers
     ) as ConnectableObservable<number>; // there's an issue about type inference not working: https://github.com/ReactiveX/rxjs/issues/2972
 
 // calling connect() will "trigger" the subscription to the original observable source

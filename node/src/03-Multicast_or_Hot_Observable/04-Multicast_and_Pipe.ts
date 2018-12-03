@@ -1,5 +1,5 @@
-import { Observable, ConnectableObservable, interval, Subject } from "rxjs";
-import { publish, tap, share } from "rxjs/operators";
+import { Subject } from "rxjs";
+import { tap } from "rxjs/operators";
 
 // A Subject is a Multicast / Hot Observable...
 // But beware of the .pipe()! it will make it unicast / cold again!

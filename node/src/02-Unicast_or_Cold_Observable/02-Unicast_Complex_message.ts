@@ -17,7 +17,9 @@ import { Observable } from "rxjs";
 
 class Message {
     private static idx = 0;
+    
     public id: number;
+
     constructor() {
         Message.idx++;
         this.id = Message.idx;

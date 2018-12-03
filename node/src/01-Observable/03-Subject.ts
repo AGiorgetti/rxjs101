@@ -17,9 +17,12 @@ import { Observable, interval, Subscriber, Subject } from "rxjs";
 // simply be lost because noone listen to it.
 
 const s$ = new Subject<number>();
-s$.next(1); // if noone is listening the message is lost
+
+s$.next(1); // if noone is listening the message will be lost
+
 s$.subscribe(v => console.log("1st subscriber: " + v));
 s$.subscribe(v => console.log("2nd subscriber: " + v));
+
 s$.next(2);
 
 // Output:
@@ -28,9 +31,12 @@ s$.next(2);
 // 2nd subscriber: 2
 
 // There are also some specialization of the Subject class:
-// - BehaviorSubject: keeps the current value and replays it to the new subscribers
-// - RelaySubject: records multiple values form the observable execution and replays them to the new subscribers
-// - AsyncSubject: send only the last value of the observable execution only when the obsrvable completes
+//
+// - BehaviorSubject: keeps the current value and replays it to the new subscribers.
+// - RelaySubject: records multiple values form the observable execution and 
+//                 replays them to the new subscribers.
+// - AsyncSubject: send only the last value of the observable execution only when 
+//                 the obsrvable completes.
 
 // for detailed information on Subjects and how Multicast works: 
 // https://rxjs-dev.firebaseapp.com/guide/subject

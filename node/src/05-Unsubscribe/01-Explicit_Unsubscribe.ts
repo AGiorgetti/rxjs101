@@ -1,7 +1,7 @@
 import { interval } from "rxjs";
 
 /**
- * There's the need of a way of completing or cancelling the execution of 
+ * We need way to complete or cancel the execution of 
  * an Observable.
  * This can be done calling the .unsubscribe() method of the Subscription object.
  * 
@@ -35,4 +35,5 @@ console.log('We unsubscribed before the timer could emit it\' first tick');
 // was the subscription closed? false
 // (no message delivered)
 // was the subscription closed? true
+//
 // We unsubscribed before the timer could emit it' first tick
