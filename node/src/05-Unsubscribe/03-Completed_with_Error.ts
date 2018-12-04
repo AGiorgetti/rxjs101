@@ -6,7 +6,10 @@ console.log('* Error Observable');
 
 // An error also completes the Observable and kills subscriptions.    
 const source$ = new Subject();
-const subscription = source$.subscribe(() => { }, data => console.log(data));
+const subscription = source$.subscribe(
+    () => { }, // 'next' value function
+    data => console.log(data) // 'error' function
+);
 
 source$.error("error!");
 

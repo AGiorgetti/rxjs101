@@ -18,9 +18,11 @@ const subscription = interval$
     .pipe(
         take(3)
     )
-    .subscribe(data => {
-        console.log(`timer: ${data}`);
-    });
+    .subscribe(
+        data => console.log(`timer: ${data}`),
+        () => { },
+        () => console.log("completed")
+    );
 
 console.log(`was the subscription closed? ${subscription.closed}`);
 
@@ -35,4 +37,5 @@ setTimeout(
 // timer: 0 
 // timer: 1
 // timer: 2
+// completed
 // was the subscription closed? true (after 4s)

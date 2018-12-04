@@ -66,7 +66,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
     http.get<IDatabase>('./assets/database.json')
       .pipe(
         map(result => result != null ? result.items : null),
-        take(1) // take() unsubscrbes after getting the first value
+        take(1) // take() unsubscribes after getting the first value
       )
       .subscribe(data => this.items_take_unsubscribe = data);
 

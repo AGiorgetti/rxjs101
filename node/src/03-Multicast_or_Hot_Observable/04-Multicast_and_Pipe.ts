@@ -8,7 +8,7 @@ let idx = 0;
 const s$ = new Subject<number>();
 // the pipe() operator make the subject Cold
 const o$ = s$.pipe(
-    tap(() => console.log("tap: " + idx++)),
+    tap(() => console.log("tap: " + ++idx)),
     // share() // <- use the share() operator to make it hot!
 );
 
@@ -23,20 +23,20 @@ s$.next(4);
 
 // Output: (without share())
 //
-// tap: 0          (the side effect is executed for each message for each subscriber)
+// tap: 1          (the side effect is executed for each message for each subscriber)
 // subscriber 1: 3
-// tap: 1
-// subscriber 2: 3
 // tap: 2
-// subscriber 1: 4
+// subscriber 2: 3
 // tap: 3
+// subscriber 1: 4
+// tap: 4
 // subscriber 2: 4
 
 // Output: (with share())
 //
-// tap: 0          (the side effect is executed once per message)
+// tap: 1          (the side effect is executed once per message)
 // subscriber 1: 3
 // subscriber 2: 3
-// tap: 1
+// tap: 2
 // subscriber 1: 4
 // subscriber 2: 4
