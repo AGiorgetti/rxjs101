@@ -1,17 +1,17 @@
 <h2>05 How to Unsubscribe Observables</h2>
 
-<h3>1 - AsyncPipe: calls unsubscribe when the component will be destroyed</h3>
+<h3>1 - AsyncPipe: will automatically call unsubscribe() when the component will be destroyed</h3>
 <ul>
   <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
 </ul>
 
 <hr>
 <h3>Explicit Subscriptions</h3>
-<p>You are responsible to call .unsubscribe() for any explicit subscription made in code!</p>
+<p>It's OUR responsibility to call .unsubscribe() for any explicit subscription made in code!</p>
 <p>Unsubscribe can be called:</p>
 <ul>
   <li>Explictly: subscription.unsubscribe()</li>
-  <li>By an rxjs operation that kills the subscription once the observable completes</li>
+  <li>By an RxJS operator that kills the subscription once the observable completes</li>
 </ul>
 
 <h3>2 - Explicit Unsubscribe</h3>

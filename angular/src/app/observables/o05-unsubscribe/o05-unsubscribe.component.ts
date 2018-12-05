@@ -73,8 +73,8 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
     // Best Practice
     http.get<IDatabase>('./assets/database.json')
       .pipe(
-        map(result => result != null ? result.items : null),
-        takeUntil(this.onDestroy$) // takeUntill will unsubscribe when it gets a message
+        takeUntil(this.onDestroy$), // takeUntill will unsubscribe when it gets a message
+        map(result => result != null ? result.items : null)
       )
       .subscribe(data => this.items_best_practice = data);
   }

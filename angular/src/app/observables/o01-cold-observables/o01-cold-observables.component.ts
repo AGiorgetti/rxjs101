@@ -16,10 +16,10 @@ export class O01ColdObservablesComponent implements OnInit {
   constructor(
     http: HttpClient
   ) {
-    this.items$ = http.get<IDatabase>('./assets/database.json')
-      .pipe(
-        map(result => result != null ? result.items : null)
-      );
+    this.items$ = http.get<IDatabase>('./assets/database.json');
+      // .pipe(
+      //   map(result => result != null ? result.items : null)
+      // );
   }
 
   ngOnInit() {

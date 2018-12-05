@@ -2,11 +2,11 @@
 
 First
 <ul>
-  <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
+  <li *ngFor="let itm of (items$ | async)?.items">{{itm | json}}</li>
 </ul>
 Second
 <ul>
-  <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
+  <li *ngFor="let itm of (items$ | async)?.items">{{itm | json}}</li>
 </ul>
 
 <p><strong>Look: we have TWO (2) web requests!</strong></p>

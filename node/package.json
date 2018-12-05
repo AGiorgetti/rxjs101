@@ -12,6 +12,6 @@
     "rxjs": "6.3.3"
   },
   "devDependencies": {
-    "@types/node": "10.12.7"
+    "@types/node": "10.12.12"
   }
 }

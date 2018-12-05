@@ -13,15 +13,14 @@ console.log('* Operators that call complete()');
 // - first(predicate): checks each value against a predicate function, if it returns `true`, the emits that value and completes.
 // - toPromise(): convertsthe observable in a promise.
 
-const interval$ = interval(1000);
-const subscription = interval$
+const subscription = interval(1000)
     .pipe(
         take(3)
     )
     .subscribe(
-        data => console.log(`timer: ${data}`),
-        () => { },
-        () => console.log("completed")
+        data => console.log(`timer: ${data}`), // 'next' function
+        () => { }, // 'error' function
+        () => console.log("completed") // 'complete' function
     );
 
 console.log(`was the subscription closed? ${subscription.closed}`);
