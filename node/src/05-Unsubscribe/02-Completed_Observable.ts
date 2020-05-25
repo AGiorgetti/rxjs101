@@ -6,6 +6,11 @@ console.log('* Completed Observable');
 
 // There's no need to unsubscribe to "completed" observable.
 // Once the observable completes, all the subscription will be removed.
+//
+// you can complete an Observable:
+// - because of the way the observable is created (like the 'of' function).
+// - calling the .complete()/.error() methods if available, or using operator.
+// - using some operators (see next examples).
 
 const source$ = of("single data"); // sync observable that completes after emitting the value.
 
