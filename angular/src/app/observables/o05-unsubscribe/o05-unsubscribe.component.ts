@@ -70,7 +70,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
       )
       .subscribe(data => this.items_take_unsubscribe = data);
 
-    // Best Practice
+    // 4- Best Practice
     http.get<IDatabase>('./assets/database.json')
       .pipe(
         takeUntil(this.onDestroy$), // takeUntill will unsubscribe when it gets a message
@@ -83,7 +83,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // imperatively unsubscribe
+    // imperative unsubscribe
     if (this.items_explicit_subscription != null) {
       this.items_explicit_subscription.unsubscribe();
     }
