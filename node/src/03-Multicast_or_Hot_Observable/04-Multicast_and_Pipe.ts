@@ -1,5 +1,5 @@
 import { Subject, ConnectableObservable } from "rxjs";
-import { tap, share, publish } from "rxjs/operators";
+import { tap, share, publish, map } from "rxjs/operators";
 
 // A Subject is a Multicast / Hot Observable...
 // But beware of the .pipe()! it will make it unicast / cold again!
@@ -8,7 +8,11 @@ let idx = 0;
 const s$ = new Subject<number>();
 // the pipe() operator make the subject Cold
 const o$ = s$.pipe(
-    tap(() => console.log("tap: " + ++idx)),
+    tap(arg => console.log("tap: " + arg + " tap called: " + ++idx + " times")),
+    map(arg => {
+        console.log("very conmputationally expensive operation!");
+        return arg * 10;
+    }),
     // publish() // <- use the publish() operator to make it hot!
 ) // as ConnectableObservable<number>;
 

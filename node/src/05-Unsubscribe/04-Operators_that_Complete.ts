@@ -11,7 +11,7 @@ console.log('* Operators that call complete()');
 // - takeUntil(predicate): tests the emitted values against a predicate, if it returns `true`, it will complete.
 // - first(): emits the first value and completes.
 // - first(predicate): checks each value against a predicate function, if it returns `true`, the emits that value and completes.
-// - toPromise(): convertsthe observable in a promise.
+// - toPromise(): converts the observable in a promise.
 
 const subscription = interval(1000)
     .pipe(

@@ -13,7 +13,13 @@ const o$ = new Observable<number>(subscriber => {
     }, 1000);
 });
 
-o$.subscribe(v => console.log("subscriber: " + v));
+const subscription = o$.subscribe(v => console.log("subscriber: " + v));
+
+console.log(`is the observable active? ${!subscription.closed}`);
+
+setTimeout(() => {
+    console.log(`is the observable active? ${!subscription.closed}`);
+}, 3000);
 
 // Output:
 //

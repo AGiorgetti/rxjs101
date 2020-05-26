@@ -17,10 +17,13 @@ import { publish } from "rxjs/operators";
 // a Subject is the only way we can Multicast in rxjs, 
 // is there a way to make an Observable multicast ?
 
-const o$ = new Observable<number>(subscriber => subscriber.next(Date.now()))
+const o$ = new Observable<number>(subscriber => {
+    console.log("a new message is about to be emitted");
+    subscriber.next(Date.now());
+})
     .pipe(
         publish() // creates a ConnectableObservable: it creates and underlying Subject
-                  // and shares it with the new subscribers
+        // and shares it with the new subscribers
     ) as ConnectableObservable<number>; // there's an issue about type inference not working: https://github.com/ReactiveX/rxjs/issues/2972
 
 // calling connect() will "trigger" the subscription to the original observable source
