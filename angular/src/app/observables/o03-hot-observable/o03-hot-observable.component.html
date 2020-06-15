@@ -1,10 +1,10 @@
 <h2>03 Multicast / Hot Observables</h2>
 
-First
+First binding
 <ul>
   <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
 </ul>
-Second
+Second binding to the same observable
 <ul>
   <li *ngFor="let itm of items$ | async">{{itm | json}}</li>
 </ul>
@@ -13,7 +13,7 @@ Third (binds 10 seconds later: it will get only the new values)
   <li *ngFor="let itm of lateItems$ | async">{{itm | json}}</li>
 </ul>
 
-<p>experiment how we make the observable hot:</p>
+<p>experiment how to make the observable multicast/hot:</p>
 <ul>
   <li><strong>default unicast observable</strong> - rendering works, but we have multiple (3) web requests!</li>
   <li><strong>publish(),refCount()</strong> - does not work! "late bound" components will not receive any value!</li>

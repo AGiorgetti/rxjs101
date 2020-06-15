@@ -22,11 +22,9 @@
 <p><strong>Only the first expression is displayed correctly</strong></p>
 <p>
   The share() operator will publish the first value on the first subscription. The first async pipe will subscribe and
-  get
-  the value.</p>
+  get the value.</p>
 <p>The second async pipe however will subscribe after that value has already been emitted and therefore will miss
-  it.
-</p>
+  it; it will however get any following value.</p>
 
 <h3>Stream with an initial value (shareReplay)</h3>
 <p>
