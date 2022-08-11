@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IDatabase, IItem } from '../model';
 
@@ -15,11 +16,11 @@ export class O02ToPromiseComponent implements OnInit {
   constructor(
     http: HttpClient
   ) {
-    this.items = http.get<IDatabase>('./assets/database.json')
+    this.items = firstValueFrom(http.get<IDatabase>('./assets/database.json')
       .pipe(
         map((result: any) => result != null ? result.items : null)
       )
-      .toPromise();
+    );
   }
 
   ngOnInit() {

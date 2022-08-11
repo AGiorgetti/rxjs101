@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, share, publish, refCount, publishLast, shareReplay } from 'rxjs/operators';
+import { map, share, shareReplay } from 'rxjs/operators';
 import { IDatabase, IItem } from '../model';
 
 @Component({
@@ -20,11 +20,8 @@ export class O03HotObservableComponent implements OnInit {
     this.items$ = http.get<IDatabase>('./assets/database.json')
       .pipe(
         map((result: any) => result != null ? result.items : null),
+        // make this observable hot
         // experiment uncommenting the following code
-        /*
-        publish(),
-        refCount() // make this observable hot
-        */
         // share()
         // shareReplay(1)
       );
