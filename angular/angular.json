@@ -113,5 +113,7 @@
       }
     }
   },
-  "defaultProject": "rxjs101"
+  "cli": {
+    "analytics": false
+  }
 }
