@@ -1,11 +1,12 @@
 import { Subject } from "rxjs";
 
-// a Subject is special type of Observable.
-// a Subject is the only way to Multicast a message to several subscribers.
-// the Subject does not create a new execution for any observer that subscribes.
+// "Subject" is special type of Observable.
+// "Subject" is the only way to Multicast a message to several subscribers.
+//
+// The Subject does not create a new execution for any observer that subscribes.
 //
 // Subjects are like EventEmitters: they maintain a registry of many listeners
-// (it's a true implementation of the Observer pattern)
+// (it's a true implementation of the Observer pattern).
 //
 // The subject has the following methods:
 // - `next()` can be called to emit new values that will be consumed.
@@ -15,8 +16,8 @@ import { Subject } from "rxjs";
 //
 // Subjects can emit data even of there's no active subscriptions, the data will
 // simply be lost because noone listen to it.
-
-// it's even more evident if we use a complex message
+//
+// It's even more evident if we use a complex message
 
 class Message {
     private static idx = 0;

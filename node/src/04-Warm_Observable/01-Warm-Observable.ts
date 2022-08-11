@@ -1,5 +1,5 @@
-import { ConnectableObservable, interval } from "rxjs";
-import { map, publish, refCount, tap } from "rxjs/operators";
+import { interval } from "rxjs";
+import { map, share, tap } from "rxjs/operators";
 
 // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables
 //
@@ -11,8 +11,7 @@ import { map, publish, refCount, tap } from "rxjs/operators";
 const o$ = interval(1000).pipe(
     // map(() => Date.now()),
     tap(date => console.log("new value: " + date)),
-    publish(),
-    refCount()
+    share()
 );
 
 // publish() + refCount() make the observable "Warm": 

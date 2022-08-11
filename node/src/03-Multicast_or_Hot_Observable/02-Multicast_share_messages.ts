@@ -1,14 +1,10 @@
-import { ConnectableObservable, interval } from "rxjs";
-import { publish } from "rxjs/operators";
+import { connectable, interval } from "rxjs";
 
-// a Multicast / Hot observable is shared among all the subscribers.
+// A Multicast / Hot observable is shared among all the subscribers.
 // every subscriber will get the same message, there will be just one
 // execution of the observable.
 
-const o$ = interval(1000)
-    .pipe(
-        publish()
-    ) as ConnectableObservable<number>;
+const o$ = connectable(interval(1000));
 
 o$.connect();
 

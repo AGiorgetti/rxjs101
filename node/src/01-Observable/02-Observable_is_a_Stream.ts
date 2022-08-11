@@ -1,6 +1,6 @@
 import { Observable, interval } from "rxjs";
 
-// an observable is a stream of data;
+// An Observable is a stream of data;
 // unlike a function, it can return multiple values over time,
 // even asynchronously.
 
@@ -25,9 +25,10 @@ setTimeout(() => {
 //
 // subscriber: 1
 // subscriber: 2
+// is the observable active? true
 // subscriber: 3 (after 1s)
 
-// or use a builtin `creation operator` to create an Observable that
+// Or use a builtin `creation operator` to create an Observable that
 // emits an infinite sequence of numbers over time.
 
 const o2$ = interval(1000);
@@ -40,3 +41,4 @@ o2$.subscribe(v => console.log("interval subscriber: " + v));
 // interval subscriber: 1
 // interval subscriber: 2
 // interval subscriber: 3
+// ...

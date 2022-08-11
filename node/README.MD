@@ -24,7 +24,7 @@ Only the `Subject` is actually a real implementation of the observer pattern, be
 
 ## Documentation
 
-The sample is based on rxjx 6+
+The sample is based on rxjx 7+
 
 - [RxJS GitHub](https://github.com/ReactiveX/rxjs)
 - [RxJS documentation](https://rxjs-dev.firebaseapp.com/)

@@ -5,11 +5,12 @@ import { of, Observable, Subscriber } from "rxjs";
 console.log('* Completed Observable');
 
 // There's no need to unsubscribe to "completed" observable.
-// Once the observable completes, all the subscription will be removed.
 //
-// you can complete an Observable:
-// - because of the way the observable is created (like the 'of' function).
-// - calling the .complete()/.error() methods if available, or using operator.
+// Once the observable completes, all the subscriptions will be removed.
+//
+// You can complete an Observable:
+// - because of the way the Sbservable is created (like the 'of' function).
+// - calling the .complete() / .error() methods if available.
 // - using some operators (see next examples).
 
 /*
@@ -20,11 +21,11 @@ const source$ = new Observable<string>(Subscriber => {
 */
 const source$ = of("single data"); // sync observable that completes after emitting the value.
 
-const subscription = source$.subscribe(
-    data => console.log(data), // 'next' function
-    () => { console.log("error!") }, // 'error' function
-    () => { console.log("completed") }// 'complete' function 
-);
+const subscription = source$.subscribe({
+    next: data => console.log(data), // 'next' function
+    error: () => { console.log("error!") }, // 'error' function
+    complete: () => { console.log("completed") }// 'complete' function 
+});
 
 console.log(`was the subscription closed? ${subscription.closed}`);
 console.log('if "true" there\'s no need to unsubscribe.');

@@ -1,5 +1,4 @@
 import { Subject } from "rxjs";
-import { catchError } from "rxjs/operators";
 
 // 3- Completed with Error
 
@@ -7,11 +6,11 @@ console.log('* Error Observable');
 
 // An error also completes the Observable and kills subscriptions.    
 const source$ = new Subject();
-const subscription = source$.subscribe(
-    data => console.log(data), // 'next' function
-    data => console.log("error: " + data), // 'error' function
-    () => { console.log("completed") }// 'complete' function 
-);
+const subscription = source$.subscribe({
+    next: data => console.log(data), // 'next' function
+    error: data => console.log("error: " + data), // 'error' function
+    complete: () => { console.log("completed") }// 'complete' function 
+});
 
 source$.next("msg1");
 
