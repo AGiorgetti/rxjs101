@@ -35,15 +35,15 @@ import { IItem, IDatabase } from '../model';
 })
 export class O05UnsubscribeComponent implements OnInit, OnDestroy {
 
-  public items$: Observable<IItem[]>;
+  public items$: Observable<IItem[] | null>;
 
-  public items_explicit: IItem[];
+  public items_explicit: IItem[] | null = null;
   public items_explicit_subscription: Subscription;
 
-  public items_take_unsubscribe: IItem[];
+  public items_take_unsubscribe: IItem[] | null = null;
 
   // Best Practice
-  public items_best_practice: IItem[];
+  public items_best_practice: IItem[] | null = null;
   private onDestroy$ = new Subject<boolean>();
 
   constructor(
