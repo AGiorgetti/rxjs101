@@ -12,7 +12,7 @@ import { IDatabase, IItem } from '../model';
 export class O03HotObservableComponent implements OnInit {
 
   public items$: Observable<IItem[]>;
-  public lateItems$: Observable<IItem[]>;
+  public lateItems$: Observable<IItem[]> | null = null;
 
   constructor(
     http: HttpClient
