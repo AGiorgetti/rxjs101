@@ -10,12 +10,14 @@ import { map, share, shareReplay } from 'rxjs/operators';
 export class O04ShareComponent implements OnInit {
 
   notSharedSource$ = new BehaviorSubject({ name: 'not shared' });
+
   notShared$ = this.notSharedSource$
     .pipe(
       map(item => item.name)
     );
 
   sharedSource$ = new BehaviorSubject({ name: 'shared' });
+
   shared$ = this.sharedSource$
     .pipe(
       map(item => item.name),
@@ -23,6 +25,7 @@ export class O04ShareComponent implements OnInit {
     );
 
   sharedReplaySource$ = new BehaviorSubject({ name: 'sharedRelay' });
+
   sharedReplay$ = this.sharedReplaySource$
     .pipe(
       map(item => item.name),

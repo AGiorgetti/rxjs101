@@ -1,7 +1,8 @@
 <h2>04 The "right way" to share() an Observable</h2>
 <h3>Stream with an initial value (not shared)</h3>
 <p>
-  <strong>notShared$</strong> is <strong>NOT SHARED</strong>, this means that for every async pipe, the computation will be executed again
+  <strong>notShared$</strong> is <strong>NOT SHARED</strong>, this means that for every async pipe, the computation will
+  be executed again
 </p>
 <ul>
   <li>First = {{notShared$|async}}</li>
@@ -11,7 +12,8 @@
 
 <h3>Stream with an initial value (shared)</h3>
 <p>
-  <strong>shared$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the computation will be executed only once
+  <strong>shared$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the computation will be
+  executed only once
 </p>
 <ul>
   <li>First = {{shared$|async}}</li>
@@ -19,21 +21,22 @@
 </ul>
 <p><strong>Only the first expression is displayed correctly</strong></p>
 <p>
-  The share() operator will publish the first value on the first subscription. The first async pipe will subscribe and get
-  the value. The second async pipe however will subscribe after that value has already been emitted and therefore will miss
-  it.
-</p>
+  The share() operator will publish the first value on the first subscription. The first async pipe will subscribe and
+  get the value.</p>
+<p>The second async pipe however will subscribe after that value has already been emitted and therefore will miss
+  it; it will however get any following value.</p>
 
 <h3>Stream with an initial value (shareReplay)</h3>
 <p>
-  <strong>sharedReplay$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the computation will be executed only once
+  <strong>sharedReplay$</strong> is <strong>SHARED</strong>, this means that for all async pipes, the computation will
+  be executed only once
 </p>
 <ul>
   <li>First = {{sharedReplay$|async}}</li>
   <li>Second = {{sharedReplay$|async}}</li>
 </ul>
-<p>Both expressions are displayed correctly and the functionality is only executed once</p>
+<p>Both expressions are displayed correctly and the functionality is only executed once.</p>
 <p>
-  the shareReplay(1) operator will do a publishReplay(1),refcount() behind the scenes which keeps track of the last element in
-  the stream, and will emit it again when the second subscription is made.
+  The shareReplay(1) operator will do a publishReplay(1),refcount() behind the scenes which keeps track of the last
+  element in the stream, and will emit it again when the second subscription is made.
 </p>

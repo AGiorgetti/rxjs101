@@ -1,7 +1,7 @@
-import { Observable, interval, Subscriber, Subject } from "rxjs";
+import { Subject } from "rxjs";
 
-// a Subject is special type of Observable.
-// a Subject is the only way to Multicast a message to several subscribers.
+// A Subject is special type of Observable.
+// A Subject is the only way to Multicast a message to several subscribers.
 // the Subject does not create a new execution for any observer that subscribes.
 //
 // Subjects are like EventEmitters: they maintain a registry of many listeners
@@ -13,7 +13,7 @@ import { Observable, interval, Subscriber, Subject } from "rxjs";
 // - `complete` can be called to notify of a successful completion.
 // - `subscribe` creates a subscription for a data consumer.
 //
-// Subjects can emit data even of there's no active subscriptions, the data will
+// Subjects can emit data even if there's no active subscription, the data will
 // simply be lost because noone listen to it.
 
 const s$ = new Subject<number>();
@@ -36,7 +36,7 @@ s$.next(2);
 // - RelaySubject: records multiple values form the observable execution and 
 //                 replays them to the new subscribers.
 // - AsyncSubject: send only the last value of the observable execution only when 
-//                 the obsrvable completes.
+//                 the observable completes.
 
 // for detailed information on Subjects and how Multicast works: 
 // https://rxjs-dev.firebaseapp.com/guide/subject

@@ -35,15 +35,15 @@ import { IItem, IDatabase } from '../model';
 })
 export class O05UnsubscribeComponent implements OnInit, OnDestroy {
 
-  public items$: Observable<IItem[]>;
+  public items$: Observable<IItem[] | null>;
 
-  public items_explicit: IItem[];
+  public items_explicit: IItem[] | null = null;
   public items_explicit_subscription: Subscription;
 
-  public items_take_unsubscribe: IItem[];
+  public items_take_unsubscribe: IItem[] | null = null;
 
   // Best Practice
-  public items_best_practice: IItem[];
+  public items_best_practice: IItem[] | null = null;
   private onDestroy$ = new Subject<boolean>();
 
   constructor(
@@ -70,7 +70,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
       )
       .subscribe(data => this.items_take_unsubscribe = data);
 
-    // Best Practice
+    // 4- Best Practice
     http.get<IDatabase>('./assets/database.json')
       .pipe(
         takeUntil(this.onDestroy$), // takeUntill will unsubscribe when it gets a message
@@ -83,7 +83,7 @@ export class O05UnsubscribeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // imperatively unsubscribe
+    // imperative unsubscribe
     if (this.items_explicit_subscription != null) {
       this.items_explicit_subscription.unsubscribe();
     }

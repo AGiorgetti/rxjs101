@@ -11,17 +11,17 @@ console.log('* Operators that call complete()');
 // - takeUntil(predicate): tests the emitted values against a predicate, if it returns `true`, it will complete.
 // - first(): emits the first value and completes.
 // - first(predicate): checks each value against a predicate function, if it returns `true`, the emits that value and completes.
-// - toPromise(): convertsthe observable in a promise.
+// - toPromise(): converts the observable in a promise.
 
 const subscription = interval(1000)
     .pipe(
         take(3)
     )
-    .subscribe(
-        data => console.log(`timer: ${data}`), // 'next' function
-        () => { }, // 'error' function
-        () => console.log("completed") // 'complete' function
-    );
+    .subscribe({
+        next: data => console.log(`timer: ${data}`), // 'next' function
+        error: () => { }, // 'error' function
+        complete: () => console.log("completed") // 'complete' function
+    });
 
 console.log(`was the subscription closed? ${subscription.closed}`);
 
@@ -33,7 +33,7 @@ setTimeout(
 // Output:
 //
 // was the subscription closed? false
-// timer: 0 
+// timer: 0
 // timer: 1
 // timer: 2
 // completed

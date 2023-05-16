@@ -11,12 +11,12 @@ Second
 
 <p><strong>Convert the Observable to a Promise: we are down to ONE (1) web request!</strong></p>
 <br />
-<p>The .toPromise() operator subscribes the observable, cretaes and returns a Promise.</p>
+<p>The firstValueFrom() / .toPromise() operator subscribes the observable, cretaes and returns a Promise.</p>
 <p>The Promise will be resolved when the observable complete.</p>
 <p>The Promise will be rejected in case of errors.</p>
 <br />
 <p>It works but it has some drawbacks:</p>
 <ul>
-  <li>the web request will be made up front, event if there's no binding that displays the value.</li>
-  <li>we've lost the power all the RxJS operators that can be used to transform the data.</li>
+  <li>The web request will be made up front, even if there's no binding that displays the value.</li>
+  <li>We've lost the power of all the RxJS operators that can be used to transform the data.</li>
 </ul>
