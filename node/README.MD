@@ -38,11 +38,15 @@ move to the folder: .\node
 
 open a command propmpt and type:
 
-    npm install
-    tsc -w
+```bash
+npm install
+tsc -w
+```
 
 ## Run the Samples
 
 to run the compiled samples open a command prompt and type:
 
-    node .\out-tsc\sampleName.js
+```bash
+node .\out-tsc\sampleName.js
+```
