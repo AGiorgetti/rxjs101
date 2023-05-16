@@ -38,7 +38,7 @@ move to the folder: .\node
 
 open a command propmpt and type:
 
-```bash
+```powershell
 npm install
 tsc -w
 ```
@@ -47,6 +47,6 @@ tsc -w
 
 to run the compiled samples open a command prompt and type:
 
-```bash
+```powershell
 node .\out-tsc\sampleName.js
 ```
