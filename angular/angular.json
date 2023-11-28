@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rxjs101:build:production"
+              "buildTarget": "rxjs101:build:production"
             },
             "development": {
-              "browserTarget": "rxjs101:build:development"
+              "buildTarget": "rxjs101:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rxjs101:build"
+            "buildTarget": "rxjs101:build"
           }
         },
         "test": {
